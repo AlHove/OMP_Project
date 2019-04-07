@@ -1,0 +1,3 @@
+﻿  OMP_Project.cpp
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(14): warning C4326: return type of 'main' should be 'int' instead of 'void'
+  OMP_Project.vcxproj -> C:\Users\Alyssa\Documents\GitHub\OMP_Project\OMP_Project\Debug\OMP_Project.exe
