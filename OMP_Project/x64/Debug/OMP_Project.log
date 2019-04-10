@@ -1,15 +1,12 @@
 ﻿  OMP_ID.cpp
 c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(19): warning C4326: return type of 'main' should be 'int' instead of 'void'
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(22): warning C4101: 'total': unreferenced local variable
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(20): warning C4101: 'threadID': unreferenced local variable
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(43): error C2143: syntax error: missing ';' before '<<'
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(43): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(44): error C2059: syntax error: '}'
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(44): error C2143: syntax error: missing ';' before '}'
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_id.cpp(21): warning C4101: 'total': unreferenced local variable
   OMP_Project.cpp
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(21): warning C4129: 'P': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(23): warning C4129: 'P': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(26): warning C4129: 'S': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(14): warning C4101: 'totalThreads': unreferenced local variable
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(15): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(22): warning C4129: 'P': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(24): warning C4129: 'P': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(27): warning C4129: 'S': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(16): warning C4101: 'totalThreads': unreferenced local variable
   Generating Code...
+OMP_Project.obj : error LNK2005: main already defined in OMP_ID.obj
+C:\Users\Alyssa\Documents\GitHub\OMP_Project\OMP_Project\x64\Debug\OMP_Project.exe : fatal error LNK1169: one or more multiply defined symbols found
