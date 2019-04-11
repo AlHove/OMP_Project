@@ -1,12 +1,12 @@
 /* Alyssa Hove and Katheryn Weeden
  Task 3: A small college wants to know how many id numbers exist that meet these criteria:
 
-1. 6 digits 9^6
-2. first digit is non-zero : 8 * (9^5)
-3. two consecutive digits may not be the same:
-4. sum of the digits may not be 7, 11 or 13
+1. 6 digits done
+2. first digit is non-zero  done
+3. two consecutive digits may not be the same: done
+4. sum of the digits may not be 7, 11 or 13: done
 
-Plan create mulitple threads to run each count, split the into into many 
+Plan create mulitple threads to run each count, split the into into many
 talk to kruse about simplification if possible
 */
 
@@ -18,46 +18,154 @@ talk to kruse about simplification if possible
 #include <windows.h>
 using namespace std;
 
-void main()
+int main(void)
 {
-
-	int start, total;
-	int idNum[5];
+	int start, total, count;
+	int idNum[6] = { 0,0,0,0,0,0 };
 
 	start = GetTickCount();
+
 #pragma omp parallel sections private(idNum[])
-	{  
-		for (int a = 1; a < 4; a++) {
-			for (int b = 0; b < 10; b++) {
-				for (int c = 0; c < 10; c++) {
-					
-					for (int d = 0; c < 10; d++) {
-
-						for (int e = 0; e < 10; e++) {
-
-							for (int f = 0 < 10; e++) {
-
-							}
-						}
-					}
-				}
+	{
+		// first thread 100000 - 399999
+		idNum[0] = 1;
+		int sum = 0;
+		int count = 0;
+		bool valid;
+		while (idNum[0] < 4) {
+			valid = true;
+			idNum[5]++;
+			if (idNum[5] == idNum[4] || idNum[5] == idNum[3]) {
+				valid = false;
+			}
+			if (idNum[4] == idNum[3] || idNum[4] == idNum[2]) {
+				valid = false;
+			}
+			if (idNum[3] == idNum[2] || idNum[3] == idNum[1]) {
+				valid = false;
+			}
+			if (idNum[2] == idNum[1] || idNum[2] == idNum[0]) {
+				valid = false;
+			}
+			if (idNum[5] = 10) {
+				idNum[5] = 0;
+				idNum[4]++;
+			}
+			if (idNum[4] = 10) {
+				idNum[4] = 0;
+				idNum[3]++;
+			}
+			if (idNum[3] = 10) {
+				idNum[3] = 0;
+				idNum[2]++;
+			}
+			if (idNum[2] = 10) {
+				idNum[2] = 0;
+				idNum[1]++;
+			}
+			if (idNum[1] = 10) {
+				idNum[1] = 0;
+				idNum[0]++;
+			}
+			sum = idNum[0] + idNum[1] + idNum[2] + idNum[3] + idNum[4] + idNum[5];
+			if (!((sum == 7) || (sum = 13) || (sum = 11)) && valid) {
+				count++;
 			}
 		}
-	}
-#pragma omp section
-	// thread 2 first digit is not 0
-	{
-	}
-#pragma omp section
-	// thread 3 two consecutive 
-	{
-	}
-#pragma omp section
-	// thread 4 sum of digits 
-	{
 
 	}
+#pragma omp section // 400000 - 699999
+	{
+		idNum[0] = 4;
+		int sum = 0;
+		int count = 0;
+		bool valid;
+		while (idNum[0] < 7) {
+			idNum[5]++;
+			if (idNum[5] == idNum[4] || idNum[5] == idNum[3]) {
+				valid = false;
+			}
+			if (idNum[4] == idNum[3] || idNum[4] == idNum[2]) {
+				valid = false;
+			}
+			if (idNum[3] == idNum[2] || idNum[3] == idNum[1]) {
+				valid = false;
+			}
+			if (idNum[2] == idNum[1] || idNum[2] == idNum[0]) {
+				valid = false;
+			}
+			if (idNum[5] = 10) {
+				idNum[5] = 0;
+			}
+			if (idNum[4] = 10) {
+				idNum[4] = 0;
+				idNum[3]++;
+			}
+			if (idNum[3] = 10) {
+				idNum[3] = 0;
+				idNum[2]++;
+			}
+			if (idNum[2] = 10) {
+				idNum[2] = 0;
+				idNum[1]++;
+			}
+			if (idNum[1] = 10) {
+				idNum[1] = 0;
+				idNum[0]++;
+			}
+			sum = idNum[0] + idNum[1] + idNum[2] + idNum[3] + idNum[4] + idNum[5];
+			if (!((sum == 7) || (sum = 13) || (sum = 11))) {
+				count++;
+			}
+		}
+
+	}
+#pragma omp section // 700000 - 999999
+	{
+		idNum[0] = 7;
+		int sum = 0;
+		int count = 0;
+		bool valid;
+		while (idNum[0] < 10) {
+			idNum[5]++;
+			if (idNum[5] == idNum[4] || idNum[5] == idNum[3]) {
+				valid = false;
+			}
+			if (idNum[4] == idNum[3] || idNum[4] == idNum[2]) {
+				valid = false;
+			}
+			if (idNum[3] == idNum[2] || idNum[3] == idNum[1]) {
+				valid = false;
+			}
+			if (idNum[2] == idNum[1] || idNum[2] == idNum[0]) {
+				valid = false;
+			}
+			if (idNum[5] = 10) {
+				idNum[5] = 0;
+			}
+			if (idNum[4] = 10) {
+				idNum[4] = 0;
+				idNum[3]++;
+			}
+			if (idNum[3] = 10) {
+				idNum[3] = 0;
+				idNum[2]++;
+			}
+			if (idNum[2] = 10) {
+				idNum[2] = 0;
+				idNum[1]++;
+			}
+			if (idNum[1] = 10) {
+				idNum[1] = 0;
+				idNum[0]++;
+			}
+			sum = idNum[0] + idNum[1] + idNum[2] + idNum[3] + idNum[4] + idNum[5];
+			if (!((sum == 7) || (sum = 13) || (sum = 11))) {
+				count++;
+			}
+		}
 #pragma omp critical
-	cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
-	cout <<
+		cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
+		cout << endl;
+	}
 }

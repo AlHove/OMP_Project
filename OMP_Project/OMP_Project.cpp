@@ -26,7 +26,7 @@ void main() {
 
 	srand(static_cast <unsigned int> (time(0))); // initialize rand
 
-	printf("\Please Input Value m\n");
+	cout << "Please Input Value m" << endl;
 	cin >> m;
 	printf("\Please Input Value n\n");
 	cin >> n;
@@ -34,20 +34,18 @@ void main() {
 		printf("\Sorry please input a value that is greater than m\n");
 		cin >> n;
 	}
-	printf("Please Input Value for the height of your rectangle, h");
+	printf("\Please Input Value for the height of your rectangle, h \n");
 	cin >> h;
 
 	start = GetTickCount();
 
-#pragma omp parallel num_threads (maxThreads) 
+#pragma omp parallel // 	y = rand() % h;
 	{
-		x = rand() % n + m;
 		y = rand() % h;
+		x = rand() % n + m;
+
+
+#pragma omp critical // give the final area
+
 	}
-#pragma omp parallel
-
-
-#pragma omp critical
-
-
 }
