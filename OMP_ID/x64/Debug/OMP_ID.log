@@ -1,0 +1,4 @@
+﻿  OMP_ID.cpp
+c:\users\alyssa\documents\github\omp_project\omp_id\omp_id.cpp(21): warning C4326: return type of 'main' should be 'int' instead of 'void'
+c:\users\alyssa\documents\github\omp_project\omp_id\omp_id.cpp(22): warning C4101: 'total': unreferenced local variable
+  OMP_ID.vcxproj -> C:\Users\Alyssa\Documents\GitHub\OMP_Project\OMP_ID\x64\Debug\OMP_ID.exe

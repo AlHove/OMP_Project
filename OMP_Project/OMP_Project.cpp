@@ -46,6 +46,9 @@ void main() {
 
 
 #pragma omp critical // give the final area
+		{
 
+		}
 	}
+	cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
 }
