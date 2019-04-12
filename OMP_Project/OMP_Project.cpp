@@ -90,5 +90,18 @@ Please Input Value for the amount of tests.
 Program ran in 16 TickCounts
 The area is: 1.5034
 
+run 3: 
+Please Input Value m
+0
+Please Input Value n
+2
+Please Input Value for the amount of tests.
+10000000
+Program ran in 7297 TickCounts
+The area is: 1.99974
+
+My machine has 8 processors
+
+
 */
 

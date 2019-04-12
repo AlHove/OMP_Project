@@ -12,7 +12,6 @@
 #include <string>
 #include <stdio.h>
 #include <omp.h>
-#include <ctime>
 #include <cstdlib>
 #include <windows.h>
 using namespace std;
@@ -54,7 +53,15 @@ void main()
 	cout << "Count of ids: " << count << endl;
 }// end main
 
-/*Run with OMP 
+/*Run without OMP 
 Program ran in 66063 TickCounts
 Count of ids: 372102
-Run without OMP*/
+Run with OMP
+Program ran in 47 TickCounts
+Count of ids: 372102
+
+My Machine has 8 processors
+
+
+
+*/
