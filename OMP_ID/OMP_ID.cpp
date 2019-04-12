@@ -25,11 +25,9 @@ void main()
 
 	start = GetTickCount();
 
-#pragma omp private(sum, idSet, i, id, count)
-	{
+#pragma omp parallel for private(sum, idSet, i, id, count)
 		for (int id = 100000; id < 1000000; id++) 
 		{
-			printf("%d \n", id);
 			int sum = 0;
 			bool valid = true;
 			for (int i = 5; i > -1; i--)
@@ -51,8 +49,7 @@ void main()
 				}
 			}
 			idSet[5]++;
-		}// for
-	}// end pragma
+		}
 	cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
 	cout << "Count of ids: " << count << endl;
 }// end main

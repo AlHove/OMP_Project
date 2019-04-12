@@ -9,6 +9,7 @@ y < f(x) <= h
 
 #include <iostream>
 #include <string>
+#include <random>
 #include <stdio.h> // printf
 #include <stdlib.h>  // Rand
 #include <ctime> //time
@@ -17,17 +18,21 @@ y < f(x) <= h
 #include <windows.h>
 using namespace std;
 
-void main() 
+double f(double x) { // current test y = x
+	return x;
+}
+
+int main() 
 {
-	int start, b, t, h, m, n;
-	double x, y, area;
+	int start, t;
+	double b = 0.0; // initialize b with 0
+	double area, h , m, n, x, y;
 
 	// Input values
-	b = 0;
 	h = 2;
 	//end
 
-	cout << "Please Input Value m" << endl;
+	printf("\Please Input Value m\n");
 	cin >> m;
 	printf("\Please Input Value n\n");
 	cin >> n;
@@ -38,26 +43,52 @@ void main()
 	}
 	printf("\Please Input Value for the amount of tests. \n");
 	cin >> t;
+
+	/* Set Up the Randomizer */
+	std::random_device rd;  //Will be used to obtain a seed for the random number engine
+	std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
+	uniform_real_distribution<> disX(1.0, 2.0);
+	uniform_real_distribution<> disY(0.0, h);
 	
 	start = GetTickCount();
 
-
-#pragma omp private(i, b, y, x)
-	{
+#pragma omp parallel for private(x, y, b, i)
 		for (int i = 0; i < t; i++) {
 			srand(i); // i is used as seed for more randomizing
-			cout << (rand() % (m + 1)) << endl;
-			// = f(x); // x = f(x) for simplicity and the fact it can be rewritten easily
-			y = ((double)rand()*(h - 0) / (double)h - 0);
-			if (y < h)
+			x = disX(rd);
+			x = f(x);
+			y = disY(rd);
+#pragma omp critical
+			if (y < x) 
 			{
 				b++;
 			}
 		}
-
-		area = (b / t) * (h*(n - m));
-	}
+	area = (b / t) * (h*(n - m));
 	cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
-	printf("The area is: %f", area);
+	cout << "The area is: " << area << endl;
 }
+
+/*
+run with omp: y = x2 m= 1 n=2 h=4
+Please Input Value m
+1
+Please Input Value n
+2
+Please Input Value for the amount of tests.
+100000
+Program ran in 78 TickCounts
+The area is: 2.3262
+
+run 2: y = x m=1 n=2 h=2
+Please Input Value m
+1
+Please Input Value n
+2
+Please Input Value for the amount of tests.
+10000
+Program ran in 16 TickCounts
+The area is: 1.5034
+
+*/
 
