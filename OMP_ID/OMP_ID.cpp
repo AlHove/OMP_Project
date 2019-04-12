@@ -21,20 +21,19 @@ void main()
 {
 	int start, total;
 	int count = 0;
-	int idNum[6] = { 0 };
+	int idSet[6] = { 1,0,0,0,0,0 };
 
 	start = GetTickCount();
 
-#pragma omp parallel private(sum, idSet, i, id)
+#pragma omp private(sum, idSet, i, id, count)
 	{
-		int idSet[6] = { 1,0,0,0,0,0 };
-#pragma omp parallel for
 		for (int id = 100000; id < 1000000; id++) 
 		{
-			printf("%d", id);
+			printf("%d \n", id);
 			int sum = 0;
 			bool valid = true;
-			for (int i = 5; i > -1; i++) { // goes through idSet array
+			for (int i = 5; i > -1; i--)
+			{ // goes through idSet array
 				sum = idSet[i] + sum; 
 				if (idSet[i] > 9) {
 					idSet[i] = 0;
@@ -45,15 +44,20 @@ void main()
 						valid = false; // set is not valid and should not be counted 
 					}
 				}
+#pragma omp critical 
+				if (!(sum == 7 || sum == 11 || sum == 13) && valid && i == 0)
+				{
+					count = count + 1;
+				}
 			}
-			if (!(sum == 7 || sum == 11 || sum == 13) & valid) 
-			{
-				count++;
-			}
-
+			idSet[5]++;
 		}// for
-		printf("hi");
 	}// end pragma
 	cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
 	cout << "Count of ids: " << count << endl;
 }// end main
+
+/*Run with OMP 
+Program ran in 66063 TickCounts
+Count of ids: 372102
+Run without OMP*/

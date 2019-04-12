@@ -1,8 +1,7 @@
 /* Alyssa Hove and Katheryn Weeden
 
 
-since we do not know what a f(x) would be lets use h until further notice/ explanaition
-can talk to camanga tomorrow
+Do tests with 
 
 y < f(x) <= h
 // (b/t) * (h*(n-m))
@@ -18,37 +17,47 @@ y < f(x) <= h
 #include <windows.h>
 using namespace std;
 
-void main() {
-	int totalThreads;
-	int maxThreads = 7;
-	int start, b, t, m, n, h;
-	double x, y;
+void main() 
+{
+	int start, b, t, h, m, n;
+	double x, y, area;
 
-	srand(static_cast <unsigned int> (time(0))); // initialize rand
+	// Input values
+	b = 0;
+	h = 2;
+	//end
 
 	cout << "Please Input Value m" << endl;
 	cin >> m;
 	printf("\Please Input Value n\n");
 	cin >> n;
-	while (n < m) {
+	while (n < m) 
+	{
 		printf("\Sorry please input a value that is greater than m\n");
 		cin >> n;
 	}
-	printf("\Please Input Value for the height of your rectangle, h \n");
-	cin >> h;
-
+	printf("\Please Input Value for the amount of tests. \n");
+	cin >> t;
+	
 	start = GetTickCount();
 
-#pragma omp parallel // 	y = rand() % h;
+
+#pragma omp private(i, b, y, x)
 	{
-		y = rand() % h;
-		x = rand() % n + m;
-
-
-#pragma omp critical // give the final area
-		{
-
+		for (int i = 0; i < t; i++) {
+			srand(i); // i is used as seed for more randomizing
+			cout << (rand() % (m + 1)) << endl;
+			// = f(x); // x = f(x) for simplicity and the fact it can be rewritten easily
+			y = ((double)rand()*(h - 0) / (double)h - 0);
+			if (y < h)
+			{
+				b++;
+			}
 		}
+
+		area = (b / t) * (h*(n - m));
 	}
 	cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
+	printf("The area is: %f", area);
 }
+

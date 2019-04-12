@@ -1,8 +1,7 @@
 ﻿  OMP_Project.cpp
 c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(21): warning C4326: return type of 'main' should be 'int' instead of 'void'
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(31): warning C4129: 'P': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(34): warning C4129: 'S': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(24): warning C4101: 'b': unreferenced local variable
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(22): warning C4101: 'totalThreads': unreferenced local variable
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(24): warning C4101: 't': unreferenced local variable
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(32): warning C4129: 'P': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(36): warning C4129: 'S': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(39): warning C4129: 'P': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(23): warning C4101: 'x': unreferenced local variable
   OMP_Project.vcxproj -> C:\Users\Alyssa\Documents\GitHub\OMP_Project\OMP_Project\x64\Debug\OMP_Project.exe
