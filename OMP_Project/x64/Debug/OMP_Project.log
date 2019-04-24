@@ -1,6 +1,6 @@
 ﻿  OMP_Project.cpp
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(33): warning C4129: 'P': unrecognized character escape sequence
 c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(35): warning C4129: 'P': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(37): warning C4129: 'P': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(41): warning C4129: 'S': unrecognized character escape sequence
-c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(44): warning C4129: 'P': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(39): warning C4129: 'S': unrecognized character escape sequence
+c:\users\alyssa\documents\github\omp_project\omp_project\omp_project.cpp(42): warning C4129: 'P': unrecognized character escape sequence
   OMP_Project.vcxproj -> C:\Users\Alyssa\Documents\GitHub\OMP_Project\OMP_Project\x64\Debug\OMP_Project.exe

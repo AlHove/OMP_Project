@@ -1,22 +1,20 @@
 /* Alyssa Hove and Katheryn Weeden
-
-
-Do tests with 
-
-y < f(x) <= h
-// (b/t) * (h*(n-m))
+Monte Carlo Simulation with OMP
+Due 4/12/19 at 19:00 pm
 */
 
-#include <iostream>
-#include <string>
-#include <random>
+#include <iostream> // for IO
+#include <string> // for strings
+#include <random> // random
 #include <stdio.h> // printf
-#include <stdlib.h>  // Rand
+#include <stdlib.h>  
 #include <ctime> //time
 #include <omp.h>
 #include <cstdlib>
+#include <chrono>
 #include <windows.h>
 using namespace std;
+using namespace std::chrono;
 
 double f(double x) { // current test y = x
 	return x;
@@ -24,11 +22,11 @@ double f(double x) { // current test y = x
 
 int main() 
 {
-	int start, t;
+	int t;
 	double b = 0.0; // initialize b with 0
 	double area, h , m, n, x, y;
 
-	// Input values
+	// Input height value
 	h = 2;
 	//end
 
@@ -47,61 +45,49 @@ int main()
 	/* Set Up the Randomizer */
 	std::random_device rd;  //Will be used to obtain a seed for the random number engine
 	std::mt19937 gen(rd()); //Standard mersenne_twister_engine seeded with rd()
-	uniform_real_distribution<> disX(1.0, 2.0);
+	uniform_real_distribution<> disX(m,n);
 	uniform_real_distribution<> disY(0.0, h);
+	// End
 	
-	start = GetTickCount();
-
-#pragma omp parallel for private(x, y, b, i)
+	auto start = high_resolution_clock::now();
+//#pragma omp parallel for private(i)
 		for (int i = 0; i < t; i++) {
-			srand(i); // i is used as seed for more randomizing
 			x = disX(rd);
 			x = f(x);
 			y = disY(rd);
-#pragma omp critical
-			if (y < x) 
+//#pragma omp critical
+			if (y <= x) 
 			{
 				b++;
 			}
 		}
 	area = (b / t) * (h*(n - m));
-	cout << "Program ran in " << GetTickCount() - start << " TickCounts" << endl;
+	auto stop = high_resolution_clock::now();
+	auto duration = duration_cast<microseconds>(stop - start);
+	cout << "Program ran in " << duration.count() << " microseconds" << endl;
 	cout << "The area is: " << area << endl;
 }
 
 /*
-run with omp: y = x2 m= 1 n=2 h=4
-Please Input Value m
-1
-Please Input Value n
-2
-Please Input Value for the amount of tests.
-100000
-Program ran in 78 TickCounts
-The area is: 2.3262
-
-run 2: y = x m=1 n=2 h=2
-Please Input Value m
-1
-Please Input Value n
-2
-Please Input Value for the amount of tests.
-10000
-Program ran in 16 TickCounts
-The area is: 1.5034
-
-run 3: 
+with omp:
 Please Input Value m
 0
 Please Input Value n
 2
 Please Input Value for the amount of tests.
-10000000
-Program ran in 7297 TickCounts
-The area is: 1.99974
+100000
+Program ran in 73682 microseconds
+The area is: 2.00592
+w/o omp:
+Please Input Value m
+0
+Please Input Value n
+2
+Please Input Value for the amount of tests.
+100000
+Program ran in 88957 microseconds
+The area is: 1.9968
 
-My machine has 8 processors
-
-
+OMP is about 18% faster
 */
 
